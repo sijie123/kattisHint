@@ -1,0 +1,11 @@
+{
+    "name": "Kattis Hint Giver",
+    "version": "1.0",
+    "description": "Adds hints to problems on Kattis. Hint source: http://cpbook.net/methodstosolve",
+    "permissions": ["storage"],
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+    "manifest_version": 2
+  }
