@@ -1,11 +1,24 @@
-/*chrome.storage.local.set({key: value}, function() {
-  console.log('Value is set to ' + value);
-});
+function update() {
+  let dataSourceURL = "https://cpbook.net/methodstosolve"
+  $.ajax({
+    type: "GET",
+    url: dataSourceURL,
+    success: function(scrapeData) {
+      //console.log(scrapeData)
+      var cacheData = JSON.stringify(parseScrape(scrapeData))
+      chrome.storage.local.set({cache: "OK", date: new Date(), data: cacheData}, function() {
+        console.log("Synced data from methodstosolve.");
+      });
+    },
+    error: function(err) {
+      console.log(err);
+      chrome.storage.local.set({cache: "Fail", date: new Date()}, function() {
+        console.log("Failed to sync data.");
+      });
+    }
+  });
+}
 
-chrome.storage.local.get(['key'], function(result) {
-  console.log('Value currently is ' + result.key);
-});
-*/
 function parseScrape(html) {
   var dict = {}
   $(html).find("tr").each(function (entry) {

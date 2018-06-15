@@ -4,8 +4,14 @@
     "description": "Adds hints to problems on Kattis. Hint source: http://cpbook.net/methodstosolve",
     "permissions": ["storage", "https://cpbook.net/"], 
     "background": {
-      "scripts": ["jquery.min.js", "data.js", "background.js"],
+      "scripts": ["jquery.min.js", "data.js", "firstRun.js"],
       "persistent": false
     },
+    "content_scripts": [
+      {
+        "matches": ["https://open.kattis.com/problems/*"],
+        "js": ["data.js", "background.js", "addHint.js"]
+      }
+    ],
     "manifest_version": 2
   }
