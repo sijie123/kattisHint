@@ -2,9 +2,9 @@
     "name": "Kattis Hint Giver",
     "version": "1.0",
     "description": "Adds hints to problems on Kattis. Hint source: http://cpbook.net/methodstosolve",
-    "permissions": ["storage"],
+    "permissions": ["storage", "https://cpbook.net/"], 
     "background": {
-      "scripts": ["background.js"],
+      "scripts": ["jquery.min.js", "data.js", "background.js"],
       "persistent": false
     },
     "manifest_version": 2
