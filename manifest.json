@@ -10,7 +10,7 @@
     "content_scripts": [
       {
         "matches": ["https://open.kattis.com/problems/*"],
-        "js": ["data.js", "background.js", "addHint.js"]
+        "js": ["jquery.min.js", "data.js", "addHint.js"]
       }
     ],
     "manifest_version": 2
