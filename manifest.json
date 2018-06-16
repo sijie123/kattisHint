@@ -11,6 +11,10 @@
       {
         "matches": ["https://open.kattis.com/problems/*"],
         "js": ["jquery.min.js", "data.js", "addHint.js"]
+      },
+      {
+        "matches": ["https://open.kattis.com/problems"],
+        "js": ["jquery.min.js", "data.js", "addCat.js"]
       }
     ],
     "manifest_version": 2
