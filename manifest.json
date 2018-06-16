@@ -10,11 +10,9 @@
     "content_scripts": [
       {
         "matches": ["https://open.kattis.com/problems/*"],
-        "js": ["jquery.min.js", "data.js", "addHint.js"]
-      },
-      {
-        "matches": ["https://open.kattis.com/problems"],
-        "js": ["jquery.min.js", "data.js", "addCat.js"]
+        "exclude_matches": ["https://open.kattis.com/problems/*/statistics", "https://open.kattis.com/problems/*/submit"],
+        "run_at": "document_end",
+        "js": ["jquery.min.js", "tooltip.js", "data.js", "addHint.js"]
       }
     ],
     "manifest_version": 2
