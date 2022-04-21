@@ -10,8 +10,8 @@
     },
     "content_scripts": [
       {
-        "matches": ["https://open.kattis.com/problems*"],
-        "exclude_matches": ["https://open.kattis.com/problems/*/statistics", "https://open.kattis.com/problems/*/submit"],
+        "matches": ["https://*.kattis.com/problems*"],
+        "exclude_matches": ["https://*.kattis.com/problems/*/statistics", "https://*.kattis.com/problems/*/submit"],
         "run_at": "document_end",
         "js": ["jquery.min.js", "tooltip.js", "data.js", "addHint.js"]
       }
