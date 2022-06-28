@@ -1,8 +1,8 @@
-chrome.storage.local.get(['cache', 'date'], function(result) {
+chrome.storage.local.get(['cache', 'date'], function (result) {
   var oneMonthAgo = new Date();
   oneMonthAgo = oneMonthAgo.setDate(oneMonthAgo.getDate() - 30);
-  if (result[0] == "Fail" || result[1] < oneMonthAgo ) {
-    update(function(success) {
+  if (result[0] == "Fail" || result[1] < oneMonthAgo) {
+    update(function (success) {
       modifyPage();
     });
   }
@@ -31,7 +31,7 @@ function shortenCategory(cat) {
   return str;
 }
 function modifyProblem(data, currentPage) {
-  chrome.storage.local.get('data', function(result) {
+  chrome.storage.local.get('data', function (result) {
     var data = JSON.parse(result['data'])
     if (data === undefined) return;
     if (data[currentPage]) {
@@ -43,23 +43,25 @@ function modifyProblem(data, currentPage) {
 function modifyListing(data) {
   $("<th colspan='1' class='nowrap'></th>").insertAfter($("thead > tr").first().find("th").eq(3)) //7th element, right before the submit button.
   $("<th class='nowrap'>Cat.</th>").insertAfter($("thead > tr").last().find("th").eq(7)) //7th element, right before the submit button.
-  $("tr").filter(function(elem) {
+  $("tr").filter(function (elem) {
     return $(this).hasClass("odd") || $(this).hasClass("even")
-  }).each(function(idx) {
+  }).each(function (idx) {
     var dom = $(this)
     var currentProblem = dom.find("a").first().attr('href').split("/")[2];
     if (!currentProblem) return;
     if (data[currentProblem]) {
-      $("<td><a data-toggle='tooltip' data-placement='top' title='"+data[currentProblem][0]+"'>" + shortenCategory(data[currentProblem][0]) + "</a></td>").insertAfter($(this).find("td").eq(7));
+      $("<td><a data-toggle='tooltip' data-placement='top' title='" + data[currentProblem][0] + "'>" + shortenCategory(data[currentProblem][0]) + "</a></td>").insertAfter($(this).find("td").eq(7));
     }
     else {
       $("<td>-</td>").insertAfter($(this).find("td").eq(7));
     }
   })
   $('[data-toggle="tooltip"]').tooltip()
-  
+
 }
 function modifyPage() {
+  chrome.storage.local.get('data', console.log);
+  /*
   chrome.storage.local.get('data', function(result) {
     var data = JSON.parse(result['data'])
     if (!data) return;
@@ -73,5 +75,5 @@ function modifyPage() {
       modifyListing(data)
     }
   });
-
+  */
 }
