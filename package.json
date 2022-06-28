@@ -1,26 +1,19 @@
 {
   "name": "kattishint",
-  "version": "1.0.0",
-  "description": "",
-  "main": "addHint.js",
+  "version": "2.0.0",
+  "description": "Shows kattis hints on the kattis website",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cp ./public/* ./dist/ && tsc"
+    "build": "rm ./dist/* && cp ./public/* ./dist/ && tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hugo-Persson/kattisHint.git"
+    "url": "git+https://github.com/Husenap/kattisHint.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Hugo-Persson/kattisHint/issues"
+    "url": "https://github.com/Husenap/kattisHint/issues"
   },
-  "homepage": "https://github.com/Hugo-Persson/kattisHint#readme",
-  "dependencies": {
-
-  },
+  "homepage": "https://github.com/Husenap/kattisHint#readme",
   "devDependencies": {
     "@types/chrome": "0.0.158",
     "typescript": "^4.7.4"
