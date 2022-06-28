@@ -1,8 +1,11 @@
-function parseScrape(html) {
+
+
+
+function parseScrape(html: string) {
   var dict = {}
   var count = 0;
+  
 
-  console.log(html);
 
   /*
   $(html).find("tr").each(function (entry) {
@@ -19,8 +22,9 @@ function parseScrape(html) {
   return dict;
 }
 
-export default function (callback) {
-  fetch("https://cpbook.net/methodstosolve")
+export function update (callback: Function) {
+  try{
+    fetch("https://cpbook.net/methodstosolve")
     .then(response => {
       return response.text();
     })
@@ -37,4 +41,9 @@ export default function (callback) {
         callback();
       });
     });
+  }
+  catch(e){
+    console.error(e);
+  }
+  
 }

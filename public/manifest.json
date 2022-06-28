@@ -26,10 +26,7 @@
       ],
       "run_at": "document_end",
       "js": [
-        "jquery.min.js",
-        "tooltip.js",
-        "data.js",
-        "addHint.js"
+        "data.js"
       ]
     }
   ],
