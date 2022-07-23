@@ -1,0 +1,9 @@
+details.spoiler summary::after {
+  content: var(--hidden);
+  filter: blur(6px);
+  display: block;
+}
+
+details[open] summary::after {
+  display: none;
+}

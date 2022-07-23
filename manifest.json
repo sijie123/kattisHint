@@ -1,20 +1,38 @@
 {
-    "name": "Kattis Hint Giver",
-    "version": "1.1.2",
-    "description": "Adds hints to problems on Kattis. Hint source: http://cpbook.net/methodstosolve",
-    "icons": { "128": "icon128.png" },
-    "permissions": ["storage", "https://cpbook.net/"], 
-    "background": {
-      "scripts": ["jquery.min.js", "data.js", "firstRun.js"],
-      "persistent": false
-    },
-    "content_scripts": [
-      {
-        "matches": ["https://open.kattis.com/problems*"],
-        "exclude_matches": ["https://open.kattis.com/problems/*/statistics", "https://open.kattis.com/problems/*/submit"],
-        "run_at": "document_end",
-        "js": ["jquery.min.js", "tooltip.js", "data.js", "addHint.js"]
-      }
-    ],
-    "manifest_version": 2
-  }
+  "manifest_version": 3,
+  "name": "Kattis Hint Giver",
+  "version": "2.0.0",
+  "action": {
+    "default_icon": {
+      "128": "icon128.png"
+    }
+  },
+  "description": "Adds hints to problems on Kattis. Hint source: http://cpbook.net/methodstosolve",
+  "icons": { 
+    "128": "icon128.png"
+  },
+  "author": "Si Jie Lin",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.kattis.com/problems*"
+      ],
+      "run_at": "document_end",
+      "js": [
+        "kattis.js"
+      ],
+      "css" : ["spoiler.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "https://cpbook.net/"
+  ],
+  "permissions": [
+    "storage",
+    "alarms"
+  ],
+  "content_security_policy": {}
+}
