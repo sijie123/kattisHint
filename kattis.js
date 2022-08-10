@@ -127,8 +127,8 @@ const drawProblem = (hints, problem) => {
     </div>
   `
 
-  insertAfter(document.querySelector("#instructions > .attribute_list > .attribute_list-item:last-child"), toDOM(tableCategory))
-  insertAfter(document.querySelector("#instructions > .attribute_list > .attribute_list-item:last-child"), toDOM(tableFullHint))
+  insertAfter(document.querySelector("#instructions-container .attribute_list > .attribute_list-item:last-child"), toDOM(tableCategory))
+  insertAfter(document.querySelector("#instructions-container .attribute_list > .attribute_list-item:last-child"), toDOM(tableFullHint))
 }
 
 const drawHints = (hints) => {
