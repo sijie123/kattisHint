@@ -111,24 +111,24 @@ const drawProblem = (hints, problem) => {
   </details>
   ` : "Not Available"
   const tableCategory = `
-    <div class="attribute_list-item">
-      <span class="attribute_list-label">Category</span>
+    <div class="metadata_list-item">
+      <span class="metadata_list-label">Category</span>
       <span>
         ${category}
       </span>
     </div>
   `
   const tableFullHint = `
-    <div class="attribute_list-item">
-      <span class="attribute_list-label">Hint</span>
+    <div class="metadata_list-item">
+      <span class="metadata_list-label">Hint</span>
       <span style="max-width: 70%; text-align: right;">
       ${fullHint}
       </span>
     </div>
   `
 
-  insertAfter(document.querySelector("#instructions-container .attribute_list > .attribute_list-item:last-child"), toDOM(tableCategory))
-  insertAfter(document.querySelector("#instructions-container .attribute_list > .attribute_list-item:last-child"), toDOM(tableFullHint))
+  insertAfter(document.querySelector("#editor-container .metadata_list > .metadata_list-item:last-child"), toDOM(tableCategory))
+  insertAfter(document.querySelector("#editor-container .metadata_list > .metadata_list-item:last-child"), toDOM(tableFullHint))
 }
 
 const drawHints = (hints) => {
