@@ -1,5 +1,3 @@
-const HINT_SOURCE = "https://cpbook.net/methodstosolve?oj=kattis&topic=all&quality=all"
-
 const write = (sev, data) => console.log(`${new Date()} [${sev}] Kattis Hint Giver: ${data}`);
 
 const log = {
@@ -34,19 +32,6 @@ const parse = (html) => {
   return results;
 }
 
-const save = (hints) => {
-  chrome.storage.local.set({
-    "updated": Date.parse(new Date()),
-    "data": hints
-  }).then(() => {
-    log.info(`Fetched and saved hints to Chrome cache.`)
-  }).catch(err => {
-    log.error(`Failed to save hints to Chrome cache. Error: ${err}`)
-  }).then(() => {
-    return hints
-  })
-}
-
 const readCache = () => {
   let oneMonthAgo = new Date();
   oneMonthAgo = oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
@@ -65,19 +50,26 @@ const readCache = () => {
   })
 }
 
-const updateHints = () => {
+const checkHints = () => {
   return readCache()
     .then(hint => {
       log.info("Hint cache is up to date.")
       return hint
     })
     .catch((ex) => {
-      log.warn(`${ex} Re-initializing hint cache...`)
-      return fetch(HINT_SOURCE)
-        .then(rawRequest => rawRequest.text())
-        .then((rawHints) => save(rawHints))
-    })     
+      log.warn(`Caught exception while checking hints: ${ex}... Refreshing hint cache.`)
+      return requestHintUpdate()
+    }) 
 }
+
+const requestHintUpdate = () => {
+  return chrome.runtime.sendMessage('updateHints')
+    .then((response) => {
+      console.log("Receive updated hint cache HTML:", response);
+      console.log("Re-loading cache...");
+      return readCache()
+    })
+};
 
 const drawListing = (hints) => {
   console.log("Drawing on listing")
@@ -152,7 +144,7 @@ const drawHints = (hints) => {
 // Thus, using window !== undefined to judge whether the page is running
 // on background service worker vs actual window.
 if (typeof window !== "undefined") {
-  readCache()
+  checkHints()
     .then(cache => parse(cache["data"]))
     .then(hints => drawHints(hints))
 }

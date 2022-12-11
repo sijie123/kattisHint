@@ -5,5 +5,8 @@ If you've stumbled across this repo as a user, head on over to Chrome App Store 
 
 It fetches write-ups / hints / solutions from [MethodsToSolve](https://cpbook.net/methodstosolve) and adds them unintrusively as you browse [Kattis](https://open.kattis.com/)
 
-## Contributing
+## Contributing and acknowledgements
 This is just a tiny project maintained by myself. Contributions are welcome. 
+
+Additional thanks to the following contributors:
+- [@Husenap](https://github.com/Husenap)
