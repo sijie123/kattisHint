@@ -31,8 +31,7 @@
     "https://cpbook.net/"
   ],
   "permissions": [
-    "storage",
-    "alarms"
+    "storage"
   ],
   "content_security_policy": {}
 }
